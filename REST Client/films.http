@@ -1,0 +1,40 @@
+@baseurl = http://localhost:3000
+
+### Read all films
+GET {{baseurl}}/films
+
+
+###
+GET {{baseurl}}/films/?minimum-duration=3000
+
+
+### Read 1 film by id
+GET {{baseurl}}/films/1
+
+
+### Create a new Film
+POST {{baseurl}}/films
+Content-Type: application/json
+
+{
+    "title" : "Dejan",
+    "director": "Jackson",
+    "duration" : 5000
+
+}
+
+### Create a new Film (Doit rater)
+POST {{baseurl}}/films
+Content-Type: application/json
+
+{
+    "title" : "Dejan",
+    "director": "Jackson",
+    "duration" : 0
+
+}
+
+
+
+
+
