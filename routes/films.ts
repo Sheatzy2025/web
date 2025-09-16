@@ -132,6 +132,6 @@ router.post("/", (req,res) =>{
   defaultFilms.push(newFilm);
   return res.json(newFilm);
  });
- console.log("a");
+ 
 
 export default router;
