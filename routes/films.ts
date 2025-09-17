@@ -91,18 +91,7 @@ router.get('/:id', (req, res) =>{
 
 router.post("/", (req,res) =>{
   const body: unknown = req.body;
-  if(!body || typeof body !== "object" 
-    || !("title" in body) 
-    || !("director" in body)
-    || !("duration" in body)
-    || (typeof body.title !== "string")
-    || (typeof body.director !== "string")
-    || (typeof body.duration !== "number")
-    || ("budget" in body && (typeof body.budget !== "number" && Number(body.budget)<= 0))
-    || ("description" in body && typeof body.description !== "string")
-    || ("imageUrl" in body && typeof body.imageUrl !== "string")
-  
-  ){
+  if(!isGood(body)){
     return res.sendStatus(400);
   }
 
