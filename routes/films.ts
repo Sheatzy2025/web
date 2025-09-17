@@ -132,6 +132,21 @@ router.post("/", (req,res) =>{
   defaultFilms.push(newFilm);
   return res.json(newFilm);
  });
+
+
+ router.delete("/:id", (req, res) =>{
+    const idToDelete = Number(req.params.id);
+    if(!isNumber(idToDelete))
+      return res.sendStatus(403);
+
+    const filmToDelete = defaultFilms.findIndex((film) =>(idToDelete === film.id));
+
+    if(filmToDelete === -1)
+      return res.send(404);
+
+    const deleteFilm = defaultFilms.splice(filmToDelete, 1);
+    return res.json(deleteFilm);
+ });
  
 
 export default router;
