@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { Film, NewFilm } from "../types";
-import { isNumber } from "../utils/type-guards";
+import { isGood, isNumber } from "../utils/type-guards";
 
 const router = Router();
 
@@ -146,6 +146,44 @@ router.post("/", (req,res) =>{
 
     const deleteFilm = defaultFilms.splice(filmToDelete, 1);
     return res.json(deleteFilm);
+ });
+
+ router.patch("/:id", (req, res) =>{
+  const idToDelete = Number(req.params.id);
+    if(!isNumber(idToDelete))
+      return res.sendStatus(403);
+
+  const filmToPatch = defaultFilms.find((film) => film.id === idToDelete);
+ 
+  if(!filmToPatch)
+    return res.sendStatus(404);
+
+  const body: unknown = req.body;
+  if(!isGood(body)){
+    return res.sendStatus(400);
+  }
+
+  const {title, director, duration, budget, description, imageUrl}: Partial<NewFilm> = body;
+
+  if (title) {
+    filmToPatch.title = title;
+  }
+  if (director) {
+    filmToPatch.director = director;
+  }
+  if (duration) {
+    filmToPatch.duration = duration;
+  }
+  if (budget) {
+    filmToPatch.budget = budget;
+  }
+  if(description)
+    filmToPatch.description = description;
+  if(imageUrl)
+    filmToPatch.imageUrl = imageUrl;
+
+
+  return res.json(filmToPatch);
  });
  
 

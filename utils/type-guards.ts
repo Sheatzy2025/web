@@ -1,3 +1,5 @@
+import { NewFilm } from "../types";
+
 /**
  * This file contains type guards for typescript
  * @param value
@@ -18,10 +20,26 @@ const isNumber = (value: unknown): value is number => {
   return typeof value === "number" && isFinite(value);
 };
 
+
+const isGood = (value : unknown): value is Partial<NewFilm> =>{
+  if(!value || typeof value !== "object" 
+    || !("title" in value) 
+    || !("director" in value)
+    || !("duration" in value)
+    || (typeof value.title !== "string")
+    || (typeof value.director !== "string")
+    || (typeof value.duration !== "number")
+    || ("budget" in value && (typeof value.budget !== "number" && Number(value.budget)<= 0))
+    || ("description" in value && typeof value.description !== "string")
+    || ("imageUrl" in value && typeof value.imageUrl !== "string")
+  )return false;
+  return true;
+};
+
 /**
- * Check if the body is a new pizza
- * @param body
+ * Check if the value is a new pizza
+ * @param value
  * @returns boolean
  */
 
-export { isString, isNumber };
+export { isString, isNumber, isGood };
