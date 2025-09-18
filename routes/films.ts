@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import { Film, NewFilm } from "../types";
-import { isGood, isNumber } from "../utils/type-guards";
+import { isAValidNewFilm, isNumber } from "../utils/type-guards";
 
 const router = Router();
 
@@ -91,7 +91,7 @@ router.get('/:id', (req, res) =>{
 
 router.post("/", (req,res) =>{
   const body: unknown = req.body;
-  if(!isGood(body)){
+  if(!isAValidNewFilm(body)){
     return res.sendStatus(400);
   }
 
@@ -148,7 +148,7 @@ router.post("/", (req,res) =>{
     return res.sendStatus(404);
 
   const body: unknown = req.body;
-  if(!isGood(body)){
+  if(!isAValidNewFilm(body)){
     return res.sendStatus(400);
   }
 

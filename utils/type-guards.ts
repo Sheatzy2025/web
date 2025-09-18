@@ -21,7 +21,7 @@ const isNumber = (value: unknown): value is number => {
 };
 
 
-const isGood = (value : unknown): value is Partial<NewFilm> =>{
+const isAValidNewFilm = (value : unknown): value is Partial<NewFilm> =>{
   if(!value || typeof value !== "object" 
     || !("title" in value) 
     || !("director" in value)
@@ -42,4 +42,4 @@ const isGood = (value : unknown): value is Partial<NewFilm> =>{
  * @returns boolean
  */
 
-export { isString, isNumber, isGood };
+export { isString, isNumber, isAValidNewFilm };
