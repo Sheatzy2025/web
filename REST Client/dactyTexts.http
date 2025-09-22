@@ -1,0 +1,27 @@
+@baseurl = http://localhost:3000
+### Get All DactyText 
+
+GET {{baseurl}}/texts
+
+### Get one dactyText
+
+GET {{baseurl}}/texts/1
+
+### Create one DactyText
+POST {{baseurl}}/texts
+Content-Type: application/json
+
+{
+    "content" : "Hello",
+    "level": "medium"
+}
+
+### Create one DactyText ( should fail )
+POST {{baseurl}}/texts
+Content-Type: application/json
+
+{
+    "content" : "Hello",
+    "level": "Not legal level"
+}
+
