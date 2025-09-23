@@ -5,7 +5,7 @@ GET {{baseurl}}/texts
 
 ### Get one dactyText
 
-GET {{baseurl}}/texts/1
+GET {{baseurl}}/texts/e4e9b7a1-8d0f-4c12-9c4b-7f3e8a5a1f2b
 
 ### Create one DactyText
 POST {{baseurl}}/texts
@@ -22,6 +22,8 @@ Content-Type: application/json
 
 {
     "content" : "Hello",
-    "level": "Not legal level"
+    "level": "Test "
 }
 
+### Delete a text
+DELETE {{baseurl}}/texts/e4e9b7a1-8d0f-4c12-9c4b-7f3e8a5a1f2b
