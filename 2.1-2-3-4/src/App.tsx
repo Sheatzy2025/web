@@ -1,55 +1,57 @@
+import PageTitle from "./components/PageTitle/pageTitle";
+import Cinema from "./components/Cinema/cinema";
+import"./components/Cinema/cinema.css"
+
+
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
-
   const cinema1Name = "UGC DeBrouckère";
-  const cinema2Name = "UGC Toison d'Or";
 
-  const film1C1 = { title: "Film 1 - DeBrouckère", director: "Director A" };
-  const film2C1 = { title: "Film 2 - DeBrouckère", director: "Director B" };
+  const moviesCinema1 = [
+  {
+    title: "HAIKYU-THE DUMPSTER BATTLE",
+    director: "Susumu Mitsunaka",
+  },
+  {
+    title: "GOODBYE JULIA",
+    director: "Mohamed Kordofani",
+  },
+  {
+    title: "INCEPTION",
+    director: "Christopher Nolan",
+  },
+  {
+    title: "PARASITE",
+    director: "Bong Joon-ho",
+  },
+];
 
-  const film1C2 = { title: "Film 1 - Toison d'Or", director: "Director C" };
-  const film2C2 = { title: "Film 2 - Toison d'Or", director: "Director D" };
+const cinema2Name = "UGC Toison d'Or";
+
+const moviesCinema2 = [
+  {
+    title: "THE WATCHERS",
+    director: "Ishana Night Shyamalan",
+  },
+  {
+    title: "BAD BOYS: RIDE OR DIE",
+    director: "Adil El Arbi, Bilall Fallah",
+  },
+  {
+    title: "TENET",
+    director: "Christopher Nolan",
+  },
+  {
+    title: "THE IRISHMAN",
+    director: "Martin Scorsese",
+  },
+]; 
 
   return (
     <div>
-      <PageTitle title={pageTitle} />
-
-      <Cinema
-        name={cinema1Name}
-        movie1={film1C1}
-        movie2={film2C1}
-      />
-
-      <Cinema
-        name={cinema2Name}
-        movie1={film1C2}
-        movie2={film2C2}
-      />
-    </div>
-  );
-};
-
-const PageTitle = ({ title }: { title: string }) => {
-  return <h1>{title}</h1>;
-};
-
-interface Movie {
-  title: string;
-  director: string;
-}
-
-interface CinemaProps {
-  name: string;
-  movie1: Movie;
-  movie2: Movie;
-}
-
-const Cinema = (props: CinemaProps) => {
-  return (
-    <div>
-      <h2>Nom du cinéma : {props.name}</h2>
-      <h3>Film 1 : {props.movie1.title} — Réalisé par {props.movie1.director}</h3>
-      <h3>Film 2 : {props.movie2.title} — Réalisé par {props.movie2.director}</h3>
+      <PageTitle title={pageTitle}/>
+      <Cinema name={cinema1Name} movie={moviesCinema1}/>
+      <Cinema name={cinema2Name} movie={moviesCinema2}/>
     </div>
   );
 };
