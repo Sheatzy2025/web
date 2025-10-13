@@ -3,7 +3,8 @@ import Cinema from "./components/Cinema/cinema";
 import"./components/Cinema/cinema.css"
 import Header from "./components/Header/header";
 import Footer from "./components/Footer/footer";
-
+import headerLogo from "./assets/images/Logo-ubuntu_cof-orange-hex.svg.png"
+import footerLogo from "./assets/images/720X720-kali-logo.jpg"
 
 const App = () => {
   const pageTitle = "Informations sur les films dans les cinémas";
@@ -52,7 +53,7 @@ const moviesCinema2 = [
 
   return (
     <div>
-      <Header img="https://example.com/logo.png" alt="Logo de mon site">
+      <Header img={headerLogo} alt="Logo de mon site">
           <nav>
             <a href="#">Accueil</a>
         </nav>
@@ -61,7 +62,7 @@ const moviesCinema2 = [
       <PageTitle title={pageTitle}/>
       <Cinema name={cinema1Name} movie={moviesCinema1}/>
       <Cinema name={cinema2Name} movie={moviesCinema2}/>
-      <Footer img="exemple.com" alt="Pas encore d'image">
+      <Footer img={footerLogo} alt="Pas encore d'image">
           <nav>
             <a href="#">Contactez nous</a>
           </nav>     

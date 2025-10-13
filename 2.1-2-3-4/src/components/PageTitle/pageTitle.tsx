@@ -1,3 +1,5 @@
+import "./pageTitle.css"
+
 interface PageTitleProps {
   title : string;
 }

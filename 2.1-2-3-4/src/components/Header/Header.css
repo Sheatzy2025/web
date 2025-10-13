@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between; /* Espace entre le logo et le contenu */
+  align-items: center;            /* Aligne verticalement au centre */
+  padding: 1rem 2rem;
+  background-color: #282c34;
+  color: white;
+}
+
+.header-logo {
+  height: 50px;        /* Taille du logo */
+  width: auto;         /* Garde les proportions */
+}
+
+.header-content {
+  display: flex;
+  gap: 1rem;           /* Espace entre les éléments enfants (par ex. liens) */
+}
+
+.header-content a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.header-content a:hover {
+  text-decoration: underline;
+}
