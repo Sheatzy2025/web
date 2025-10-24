@@ -1,0 +1,10 @@
+.cinema-item {
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  margin-top: 5px;
+  font-style: italic;
+  color: #000000;
+  transition: opacity 0.3s ease;
+}
