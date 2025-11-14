@@ -99,7 +99,7 @@ const AddFilm = ({addFilm} : AddFilmProps) =>{
                     name="urlImage"
                     label="UrlImage"
                     variant="outlined"
-                    value={duree}
+                    value={urlImage}
                     onChange={handleUrlImageChange}
                     color="primary"
                     />
@@ -111,7 +111,7 @@ const AddFilm = ({addFilm} : AddFilmProps) =>{
                     name="description"
                     label="Description"
                     variant="outlined"
-                    value={duree}
+                    value={description}
                     onChange={handleDescriptionChange}
                     color="primary"
                     />
@@ -123,7 +123,7 @@ const AddFilm = ({addFilm} : AddFilmProps) =>{
                     name="budget"
                     label="Budget"
                     variant="outlined"
-                    value={duree}
+                    value={budget}
                     onChange={handleBudgetChange}
                     color="primary"
                     />
