@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  justify-content: space-between; /* espace entre logo et contenu */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+.footer-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-content a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-content a:hover {
+  color: white;
+  text-decoration: underline;
+}
