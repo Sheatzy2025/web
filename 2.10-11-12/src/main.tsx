@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import './index.css'
-import App, { MoviePage } from './App.tsx'
+import App, { MoviePage } from './components/App/App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { HomePage, CinemaPage, MovieListPage } from "./App.tsx";
+import { HomePage, CinemaPage, MovieListPage } from "./components/App/App.tsx";
+import AddMoviePage from "./components/pages/AddMoviePage.tsx";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "movies/:movieTitle",
         element:<MoviePage />
+      },
+      {
+        path:"addMovie",
+        element:<AddMoviePage/>
       }
     ],
   },
