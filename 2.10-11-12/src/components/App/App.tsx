@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, Outlet, useMatch, useNavigate, useOutletContext } from "react-router-dom";
 
-import type { CinemaContext, Film } from "../../types";
-
+import type { CinemaContext, FavContext, Film } from "../../types";
+type CombinedContext = CinemaContext & FavContext;
 const NavBar = () => {
   const navigate = useNavigate();
 
@@ -12,11 +12,29 @@ const NavBar = () => {
       <button onClick={() => navigate("Cinema")}>Cinema</button>
       <button onClick={() => navigate("MovieList")}>MovieList</button>
       <button onClick={() => navigate("AddMovie")}>AddMovie</button>
+      <button onClick={() => navigate("AddFavMovie")}>AddFavMovie</button>
     </nav>
   );
 };
 
-const HomePage = () => <p>Home Page</p>;
+const HomePage = () => {
+  const {favFilms} = useOutletContext<FavContext>()
+  return(
+    <div>
+        <h1>Films Favoris: </h1>
+        {favFilms.map((movie) => (
+        <Link
+          key={movie.title}
+          to={`/movies/${movie.title}`}
+          style={{ display: "block" }}
+        >
+          {movie.title}
+        </Link>
+        ))}
+    </div>
+   
+  )
+}
 const CinemaPage = () => <p>Cinema Page</p>;
 const MovieListPage = () => {
   const { films } = useOutletContext<CinemaContext>();
@@ -39,6 +57,7 @@ const MovieListPage = () => {
   );
 };
 const AddMoviePage = () => <p>Add a movie!</p>
+const AddFavPage = () => <p>Add a movie to fav!</p>
 
 const defaultFilms = [
   {
@@ -106,23 +125,34 @@ const MoviePage = () => {
 const App = () => {
   
   const [films, setFilms] = useState<Film[]>(defaultFilms);
-
+  const [favFilms, setFavFilms] = useState<Film[]>([]);
+  const addFavFilm = (film :Film) => {
+    setFavFilms((prev) => [...prev, film])
+  }
   const addFilm = (film : Film) => {
     setFilms((prev) => [...prev, film])
   }
 
+  const FavContext : FavContext = {
+    favFilms,
+    addFavFilm,
+  }
   const context: CinemaContext = {
     films,
     addFilm,
   };
 
+  const outletContext: CombinedContext = {
+  ...context,
+  ...FavContext,
+};
   return (
     <div>
       <NavBar />
-      <Outlet context={context} />
+      <Outlet context={outletContext} />
     </div>
   );
 };
 
 export default App;
-export {HomePage, CinemaPage, MovieListPage, MoviePage, AddMoviePage};
+export {HomePage, CinemaPage, MovieListPage, MoviePage, AddMoviePage, AddFavPage};

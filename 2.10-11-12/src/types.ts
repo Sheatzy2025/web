@@ -12,4 +12,9 @@ interface CinemaContext {
     addFilm : (film : Film) => void;
 }
 
-export type {Film, CinemaContext};
+interface FavContext {
+    favFilms : Film[];
+    addFavFilm : (film : Film) => void;
+}
+
+export type {Film, CinemaContext, FavContext};
